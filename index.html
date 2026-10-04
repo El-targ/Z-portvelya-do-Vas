@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El_sluga_skilNarody — Шкільний Сервіс та Товари</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              900: '#14532d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center font-black text-xl shadow-md shadow-brand-500/20">
+            ES
+          </div>
+          <div>
+            <span class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">El_sluga_skilNarody</span>
+            <span class="block text-xs text-brand-600 dark:text-brand-400 font-medium">Засновник: Діма Г. (9 клас)</span>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-6 font-medium text-sm">
+          <a href="#catalog" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Каталог</a>
+          <a href="#calculator" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Калькулятор</a>
+          <a href="#reviews" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Відгуки</a>
+          <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Про нас</a>
+          <a href="#contacts" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Контакти</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Змінити тему">
+            <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+            <i class="fa-solid fa-sun text-lg hidden dark:block"></i>
+          </button>
+
+          <button id="cartBtn" class="relative p-2 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 hover:bg-brand-100 transition font-semibold text-sm flex items-center gap-2">
+            <i class="fa-solid fa-cart-shopping text-base"></i>
+            <span class="hidden sm:inline">Кошик</span>
+            <span id="cartCount" class="bg-brand-600 text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-12 sm:py-20 bg-gradient-to-b from-brand-50/50 to-transparent dark:from-brand-950/20 dark:to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 text-xs font-semibold mb-6">
+        <i class="fa-solid fa-rocket"></i> Новий шкільний стартап
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight max-w-3xl mx-auto leading-tight">
+        Шкільні товари та послуги від фірми <span class="text-brand-600 dark:text-brand-400">El_sluga_skilNarody</span>
+      </h1>
+      <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-base sm:text-lg">
+        Смачні ланчбокси, стікери з шкільними мемами, корисні флеш-картки, швидкий друк, дизайн презентацій та якісна відеозйомка прямо у нашій школі.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="#catalog" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-lg shadow-brand-500/25 transition">
+          Переглянути каталог
+        </a>
+        <a href="#calculator" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-semibold hover:border-brand-500 transition">
+          Розрахувати вартість
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Catalog -->
+  <section id="catalog" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Каталог товарів та послуг</h2>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Обирайте потрібний варіант та замовляйте прямо зараз</p>
+      </div>
+      <div class="flex gap-2 p-1 bg-slate-200/60 dark:bg-slate-800 rounded-xl text-xs font-semibold">
+        <button onclick="filterCatalog('all')" class="cat-filter active px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm transition">Всі</button>
+        <button onclick="filterCatalog('product')" class="cat-filter px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 transition">Товари</button>
+        <button onclick="filterCatalog('service')" class="cat-filter px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 transition">Послуги</button>
+      </div>
+    </div>
+
+    <!-- Products & Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- 1. Еколанчбокс -->
+      <div class="catalog-item product bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 flex flex-col justify-between hover:shadow-md transition">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="p-3 bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 rounded-xl">
+              <i class="fa-solid fa-utensils text-xl"></i>
+            </span>
+            <span class="text-xs font-bold px-2.5 py-1 bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 rounded-full">Товар</span>
+          </div>
+          <h3 class="text-lg font-bold mb-1">Еколанчбокс «Енергія»</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-xs mb-4">Смачні та корисні перекуси для відновлення сил під час перерв.</p>
+          
+          <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Оберіть варіант:</label>
+          <select id="lunchboxType" class="w-full text-xs p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 mb-4 focus:ring-2 focus:ring-brand-500 outline-none">
+            <option value="Енергетичний батончик (горіхи/сухофрукти)">Енергетичний батончик — 35 грн</option>
+            <option value="Фруктовий чіпс-мікс (яблуко/банан)">Фруктовий чіпс-мікс — 40 грн</option>
+            <option value="Гранола & Ягоди в стаканчику">Гранола & Ягоди — 50 грн</option>
+          </select>
+        </div>
+        <div>
+          <button onclick="addLunchboxToCart()" class="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-plus"></i> Додати в кошик
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Стікерпаки -->
+      <div class="catalog-item product bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 flex flex-col justify-between hover:shadow-md transition">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="p-3 bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-xl">
+              <i class="fa-solid fa-note-sticky text-xl"></i>
+            </span>
+            <span class="text-xs font-bold px-2.5 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full">Товар</span>
+          </div>
+          <h3 class="text-lg font-bold mb-1">Кастомні стікерпаки</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-xs mb-4">Якісні наліпки із забавними шкільними фразами та мемами.</p>
+          
+          <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Оберіть тематику наборів:</label>
+          <select id="stickerType" class="w-full text-xs p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 mb-4 focus:ring-2 focus:ring-brand-500 outline-none">
+            <option value="Набір «Куди по помитому?!»">Набір «Куди по помитому?!» — 30 грн</option>
+            <option value="Набір «День вчителя / Шкільний гумор»">Набір «Шкільний гумор» — 30 грн</option>
+            <option value="Набір «Легендарні цитати вчителів»">Набір «Цитати вчителів» — 35 грн</option>
+          </select>
+        </div>
+        <div>
+          <button onclick="addStickerToCart()" class="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-plus"></i> Додати в кошик
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. Навчальні Флеш-картки -->
+      <div class="catalog-item product bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 flex flex-col justify-between hover:shadow-md transition">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="p-3 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl">
+              <i class="fa-solid fa-layer-group text-xl"></i>
+            </span>
+            <span class="text-xs font-bold px-2.5 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-full">Товар</span>
+          </div>
+          <h3 class="text-lg font-bold mb-1">Навчальні флеш-картки</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-xs mb-3">Ламіновані картки для швидкого повторення формул та дат (45 грн / набір).</p>
+          
+          <div class="space-y-2 mb-4">
+            <input type="text" id="fcSubject" placeholder="Предмет (напр. Історія України)" class="w-full text-xs p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none focus:border-brand-500">
+            <input type="text" id="fcTopic" placeholder="Тема або розділ (напр. Дати 19 століття)" class="w-full text-xs p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none focus:border-brand-500">
+            <input type="text" id="fcGrade" placeholder="Ваш клас (напр. 9-А)" class="w-full text-xs p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none focus:border-brand-500">
+          </div>
+        </div>
+        <div>
+          <button onclick="addFlashcardsToCart()" class="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-plus"></i> Додати в кошик
+          </button>
+        </div>
+      </div>
+
+      <!-- 4. Експрес-друк -->
+      <div class="catalog-item service bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 flex flex-col justify-between hover:shadow-md transition">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="p-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-xl">
+              <i class="fa-solid fa-print text-xl"></i>
+            </span>
+            <span class="text-xs font-bold px-2.5 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full">Послуга</span>
+          </div>
+          <h3 class="text-lg font-bold mb-1">Експрес-друк та ламінування</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-xs mb-4">Роздруківка рефератів, долікарських довідок та матеріалів прямо на перерві.</p>
+          <div class="text-xs space-y-1 text-slate-600 dark:text-slate-300 mb-4 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
+            <div>• Чорно-білий друк: 3 грн / ст.</div>
+            <div>• Кольоровий друк: 7 грн / ст.</div>
+            <div>• Ламінування (А4): 12 грн / ст.</div>
+          </div>
+        </div>
+        <div>
+          <a href="#calculator" class="w-full py-2.5 rounded-xl border border-brand-600 text-brand-600 dark:text-brand-400 font-semibold text-sm transition flex items-center justify-center gap-2 hover:bg-brand-50 dark:hover:bg-brand-900/20">
+            <i class="fa-solid fa-calculator"></i> Розрахувати у калькуляторі
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. Дизайн презентацій -->
+      <div class="catalog-item service bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 flex flex-col justify-between hover:shadow-md transition">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="p-3 bg-pink-50 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 rounded-xl">
+              <i class="fa-solid fa-pen-nib text-xl"></i>
+            </span>
+            <span class="text-xs font-bold px-2.5 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-700 dark:text-pink-300 rounded-full">Послуга</span>
+          </div>
+          <h3 class="text-lg font-bold mb-1">Дизайн презентацій</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-xs mb-4">Створення стильних слайдів у Canva або PowerPoint для захисту проектів чи виступів.</p>
+          <div class="text-xs space-y-1 text-slate-600 dark:text-slate-300 mb-4 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
+            <div>• Редагування та стиль: 10 грн / слайд</div>
+            <div>• Створення з нуля: 18 грн / слайд</div>
+          </div>
+        </div>
+        <div>
+          <a href="#calculator" class="w-full py-2.5 rounded-xl border border-brand-600 text-brand-600 dark:text-brand-400 font-semibold text-sm transition flex items-center justify-center gap-2 hover:bg-brand-50 dark:hover:bg-brand-900/20">
+            <i class="fa-solid fa-calculator"></i> Розрахувати у калькуляторі
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. Відео та Фотозйомка -->
+      <div class="catalog-item service bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 flex flex-col justify-between hover:shadow-md transition">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="p-3 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-xl">
+              <i class="fa-solid fa-video text-xl"></i>
+            </span>
+            <span class="text-xs font-bold px-2.5 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-full">Послуга</span>
+          </div>
+          <h3 class="text-lg font-bold mb-1">Фото та Відеозйомка</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-xs mb-4">Зйомка заходів, свят, створення коробок (Reels/TikTok) або портфоліо на смартфон.</p>
+          <div class="text-xs space-y-1 text-slate-600 dark:text-slate-300 mb-4 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
+            <div>• Година зйомки: 80 грн</div>
+            <div>• Монтаж короткого відео (Reels): +40 грн</div>
+          </div>
+        </div>
+        <div>
+          <a href="#calculator" class="w-full py-2.5 rounded-xl border border-brand-600 text-brand-600 dark:text-brand-400 font-semibold text-sm transition flex items-center justify-center gap-2 hover:bg-brand-50 dark:hover:bg-brand-900/20">
+            <i class="fa-solid fa-calculator"></i> Розрахувати у калькуляторі
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Section -->
+  <section id="calculator" class="py-12 bg-slate-100 dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Онлайн калькулятор послуг</h2>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Оберіть потрібні параметри для розрахунку вартості</p>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm">
+        
+        <div class="space-y-6">
+          <!-- Ч/Б Друк -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-700">
+            <div>
+              <div class="font-semibold text-sm">Чорно-білий друк (3 грн / ст.)</div>
+              <div class="text-xs text-slate-500">Кількість сторінок А4</div>
+            </div>
+            <input type="number" id="calcBw" min="0" value="0" oninput="calculateTotal()" class="w-24 text-center p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+
+          <!-- Кольоровий друк -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-700">
+            <div>
+              <div class="font-semibold text-sm">Кольоровий друк (7 грн / ст.)</div>
+              <div class="text-xs text-slate-500">Кількість сторінок А4</div>
+            </div>
+            <input type="number" id="calcColor" min="0" value="0" oninput="calculateTotal()" class="w-24 text-center p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+
+          <!-- Ламінування -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-700">
+            <div>
+              <div class="font-semibold text-sm">Ламінування документів (12 грн / ст.)</div>
+              <div class="text-xs text-slate-500">Кількість сторінок</div>
+            </div>
+            <input type="number" id="calcLam" min="0" value="0" oninput="calculateTotal()" class="w-24 text-center p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+
+          <!-- Презентації -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-700">
+            <div>
+              <div class="font-semibold text-sm">Дизайн презентацій (15 грн / слайд)</div>
+              <div class="text-xs text-slate-500">Кількість слайдів у Canva/PPT</div>
+            </div>
+            <input type="number" id="calcSlides" min="0" value="0" oninput="calculateTotal()" class="w-24 text-center p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+
+          <!-- Відеозйомка -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-700">
+            <div>
+              <div class="font-semibold text-sm">Фото / Відеозйомка (80 грн / год)</div>
+              <div class="text-xs text-slate-500">Кількість годин зйомки</div>
+            </div>
+            <input type="number" id="calcVideoHours" min="0" value="0" oninput="calculateTotal()" class="w-24 text-center p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+
+          <!-- Додатково: Монтаж Reels -->
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-700">
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="calcReels" onchange="calculateTotal()" class="w-4 h-4 text-brand-600 rounded focus:ring-brand-500 border-slate-300">
+              <label for="calcReels" class="text-sm font-semibold cursor-pointer">Додати монтаж короткого Reels/TikTok (+40 грн)</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <span class="text-slate-500 text-xs uppercase font-bold">Разом до сплати:</span>
+            <div id="calcTotal" class="text-3xl font-extrabold text-brand-600 dark:text-brand-400">0 грн</div>
+          </div>
+          <button onclick="addCalculatedToCart()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-cart-plus"></i> Додати цю послугу в кошик
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION (ВКЛАДКА / СЕКЦІЯ ВІДГУКІВ) -->
+  <section id="reviews" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Відгуки покупців</h2>
+      <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Поділіться своїм враженням про наші товари та послуги</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Форма залишення відгуку -->
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm h-fit">
+        <h3 class="text-lg font-bold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
+          <i class="fa-solid fa-pen text-brand-600 dark:text-brand-400"></i> Залишити відгук
+        </h3>
+        <form id="reviewForm" onsubmit="submitReview(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Ваше ім'я або нікнейм</label>
+            <input type="text" id="revAuthor" required placeholder="Напр. Олена (9-Б)" class="w-full text-xs p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Оцінка</label>
+            <select id="revRating" class="w-full text-xs p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-brand-500">
+              <option value="5">⭐⭐⭐⭐⭐ (5/5) — Чудово!</option>
+              <option value="4">⭐⭐⭐⭐ (4/5) — Добре</option>
+              <option value="3">⭐⭐⭐ (3/5) — Нормально</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1 text-slate-700 dark:text-slate-300">Ваш відгук</label>
+            <textarea id="revText" required rows="3" placeholder="Напишіть ваші враження..." class="w-full text-xs p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-brand-500 resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i> Опублікувати відгук
+          </button>
+        </form>
+      </div>
+
+      <!-- Список відгуків -->
+      <div class="lg:col-span-2 space-y-4" id="reviewsContainer">
+        <!-- Початкове повідомлення якщо немає відгуків -->
+        <div id="noReviewsMsg" class="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 text-center text-slate-400 text-xs">
+          <i class="fa-regular fa-comments text-4xl mb-3 block text-slate-300 dark:text-slate-600"></i>
+          Будьте першим, хто залишить відгук про роботу фірми El_sluga_skilNarody!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-700">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Про наш проект</span>
+          <h2 class="text-2xl sm:text-3xl font-bold mt-2 text-slate-900 dark:text-white">Шкільний сервіс від учнів для учнів</h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+            Фірма <strong>«El_sluga_skilNarody»</strong> створена для того, щоб полегшити навчання та зробити шкільне життя яскравішим. Засновник та власник сервісу — учень 9 класу <strong>Діма Г.</strong>
+          </p>
+          <div class="mt-6 space-y-3">
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <span class="font-semibold block">Місце зустрічі та видачі замовлень:</span>
+                <span class="text-slate-500 dark:text-slate-400">Клас біології (на великих перервах або після уроків)</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div>
+                <span class="font-semibold block">Швидкість та якість:</span>
+                <span class="text-slate-500 dark:text-slate-400">Виконання замовлень у день звернення</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 text-center">
+          <div class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center text-2xl font-black mx-auto mb-4 shadow-lg shadow-brand-500/30">
+            ES
+          </div>
+          <h3 class="font-bold text-lg">El_sluga_skilNarody</h3>
+          <p class="text-xs text-slate-500 mt-1">Офіційний шкільний стартап</p>
+          <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 space-y-1">
+            <div>Власник: Діма Г. (9 клас)</div>
+            <div>Прийом замовлень: 8:00 – 16:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacts & Footer -->
+  <footer id="contacts" class="mt-auto bg-slate-900 text-white py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center font-black">
+              ES
+            </div>
+            <span class="font-bold text-lg">El_sluga_skilNarody</span>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Зручний шкільний сервіс товарів та послуг. Засновник — учень 9 класу Діма Г.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-sm mb-3 text-slate-200">Контактна інформація</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li class="flex items-center gap-2">
+              <i class="fa-brands fa-telegram text-brand-400 text-sm"></i>
+              <span>Telegram для зв'язку: <a href="https://t.me/El_targ" target="_blank" class="text-brand-400 hover:underline font-semibold">@El_targ</a></span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-door-open text-brand-400 text-sm"></i>
+              <span>Локація у школі: Клас біології</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-user-graduate text-brand-400 text-sm"></i>
+              <span>Власник: Діма Г. (9 клас)</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-sm mb-3 text-slate-200">Години роботи</h4>
+          <p class="text-xs text-slate-400">
+            Понеділок — П'ятниця<br>
+            З 8:00 до 16:00 (у шкільні години)<br>
+            Видача замовлень на великих перервах у класі біології.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+        © 2026 El_sluga_skilNarody. Усі права захищено.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div id="cartModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-800 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
+      <div class="p-5 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+        <h3 class="font-bold text-lg">Ваш кошик замовлень</h3>
+        <button onclick="toggleCartModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white text-xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="cartItemsContainer" class="p-5 max-h-60 overflow-y-auto space-y-3">
+        <!-- Динамічні товари з JS -->
+      </div>
+
+      <div class="p-5 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-700">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-semibold text-sm">Загальна сума:</span>
+          <span id="cartModalTotal" class="text-xl font-extrabold text-brand-600 dark:text-brand-400">0 грн</span>
+        </div>
+
+        <!-- Checkout Form -->
+        <form id="checkoutForm" onsubmit="submitOrder(event)" class="space-y-3">
+          <div>
+            <input type="text" id="custName" required placeholder="Ваше ім'я" class="w-full text-xs p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+          <div>
+            <input type="text" id="custClass" required placeholder="Ваш клас (напр. 9-А)" class="w-full text-xs p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+          <div>
+            <input type="text" id="custContact" placeholder="Telegram / Телефон для зв'язку" class="w-full text-xs p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+
+          <button type="submit" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md transition">
+            Підтвердити замовлення
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+  <script>
+    // App State
+    let cart = [];
+    let reviews = [];
+
+    // Theme Switcher
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    // Catalog Filtering
+    function filterCatalog(category) {
+      const items = document.querySelectorAll('.catalog-item');
+      const buttons = document.querySelectorAll('.cat-filter');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-white', 'dark:bg-slate-700', 'shadow-sm');
+        btn.classList.add('text-slate-600', 'dark:text-slate-400');
+      });
+
+      event.target.classList.add('active', 'bg-white', 'dark:bg-slate-700', 'shadow-sm');
+      event.target.classList.remove('text-slate-600', 'dark:text-slate-400');
+
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Add Lunchbox to Cart
+    function addLunchboxToCart() {
+      const select = document.getElementById('lunchboxType');
+      const val = select.value;
+      let price = 35;
+      if (val.includes('40')) price = 40;
+      if (val.includes('50')) price = 50;
+
+      addToCart(`Ланчбокс: ${val.split('—')[0].trim()}`, price);
+    }
+
+    // Add Stickerpack to Cart
+    function addStickerToCart() {
+      const select = document.getElementById('stickerType');
+      const val = select.value;
+      let price = 30;
+      if (val.includes('35')) price = 35;
+
+      addToCart(`Стікерпак: ${val.split('—')[0].trim()}`, price);
+    }
+
+    // Add Flashcards to Cart
+    function addFlashcardsToCart() {
+      const subject = document.getElementById('fcSubject').value.trim();
+      const topic = document.getElementById('fcTopic').value.trim();
+      const grade = document.getElementById('fcGrade').value.trim();
+
+      if (!subject || !topic || !grade) {
+        alert('Будь ласка, вкажіть предмет, тему та клас для створення флеш-карток!');
+        return;
+      }
+
+      const title = `Флеш-картки (${subject}, тема: "${topic}", ${grade} клас)`;
+      addToCart(title, 45);
+
+      // Clear inputs
+      document.getElementById('fcSubject').value = '';
+      document.getElementById('fcTopic').value = '';
+      document.getElementById('fcGrade').value = '';
+    }
+
+    // Calculator Math
+    function calculateTotal() {
+      const bw = parseInt(document.getElementById('calcBw').value) || 0;
+      const color = parseInt(document.getElementById('calcColor').value) || 0;
+      const lam = parseInt(document.getElementById('calcLam').value) || 0;
+      const slides = parseInt(document.getElementById('calcSlides').value) || 0;
+      const hours = parseInt(document.getElementById('calcVideoHours').value) || 0;
+      const reels = document.getElementById('calcReels').checked ? 40 : 0;
+
+      const total = (bw * 3) + (color * 7) + (lam * 12) + (slides * 15) + (hours * 80) + reels;
+      document.getElementById('calcTotal').innerText = `${total} грн`;
+      return total;
+    }
+
+    // Add Calculated Service to Cart
+    function addCalculatedToCart() {
+      const total = calculateTotal();
+      if (total <= 0) {
+        alert('Будь ласка, вкажіть хоча б одну послугу в калькуляторі!');
+        return;
+      }
+
+      const bw = parseInt(document.getElementById('calcBw').value) || 0;
+      const color = parseInt(document.getElementById('calcColor').value) || 0;
+      const lam = parseInt(document.getElementById('calcLam').value) || 0;
+      const slides = parseInt(document.getElementById('calcSlides').value) || 0;
+      const hours = parseInt(document.getElementById('calcVideoHours').value) || 0;
+      const reels = document.getElementById('calcReels').checked;
+
+      let details = [];
+      if (bw > 0) details.push(`Ч/Б друк: ${bw}ст.`);
+      if (color > 0) details.push(`Кольоровий друк: ${color}ст.`);
+      if (lam > 0) details.push(`Ламінування: ${lam}ст.`);
+      if (slides > 0) details.push(`Слайди: ${slides}шт.`);
+      if (hours > 0) details.push(`Зйомка: ${hours}год.`);
+      if (reels) details.push(`Монтаж Reels`);
+
+      const title = `Індивідуальне замовлення послуг (${details.join(', ')})`;
+      addToCart(title, total);
+
+      // Reset calculator
+      document.getElementById('calcBw').value = 0;
+      document.getElementById('calcColor').value = 0;
+      document.getElementById('calcLam').value = 0;
+      document.getElementById('calcSlides').value = 0;
+      document.getElementById('calcVideoHours').value = 0;
+      document.getElementById('calcReels').checked = false;
+      calculateTotal();
+    }
+
+    // Generic Add to Cart
+    function addToCart(name, price) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      updateCartUI();
+      toggleCartModal(true);
+    }
+
+    // Remove / Change Qty
+    function updateQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    // Update Cart UI
+    function updateCartUI() {
+      const cartCount = document.getElementById('cartCount');
+      const container = document.getElementById('cartItemsContainer');
+      const cartModalTotal = document.getElementById('cartModalTotal');
+
+      const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+      const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+      cartCount.innerText = totalItems;
+      cartModalTotal.innerText = `${totalPrice} грн`;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-8 text-slate-400 text-xs">
+            <i class="fa-solid fa-basket-shopping text-3xl mb-2 block"></i>
+            Ваш кошик порожній
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = cart.map((item, idx) => `
+        <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-900 rounded-xl text-xs">
+          <div class="max-w-[200px]">
+            <div class="font-bold text-slate-800 dark:text-slate-100">${item.name}</div>
+            <div class="text-slate-400">${item.price} грн / шт</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="updateQty(${idx}, -1)" class="w-6 h-6 rounded bg-slate-200 dark:bg-slate-700 font-bold">-</button>
+            <span class="font-bold">${item.qty}</span>
+            <button onclick="updateQty(${idx}, 1)" class="w-6 h-6 rounded bg-slate-200 dark:bg-slate-700 font-bold">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Toggle Modal
+    function toggleCartModal(forceOpen = false) {
+      const modal = document.getElementById('cartModal');
+      if (forceOpen) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.toggle('hidden');
+      }
+    }
+
+    document.getElementById('cartBtn').addEventListener('click', () => toggleCartModal());
+
+    // Submit Order
+    function submitOrder(e) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        alert('Додайте товари або послуги у кошик перед оформленням!');
+        return;
+      }
+
+      const name = document.getElementById('custName').value;
+      const custClass = document.getElementById('custClass').value;
+      const contact = document.getElementById('custContact').value || '@El_targ';
+
+      alert(`Дякуємо, ${name} (${custClass} клас)!\n\nВаше замовлення прийнято фірмою «El_sluga_skilNarody».\nДіма Г. зв'яжеться з вами у Telegram (${contact}) або очікуватиме вас у класі біології!`);
+
+      cart = [];
+      updateCartUI();
+      toggleCartModal();
+      document.getElementById('checkoutForm').reset();
+    }
+
+    // Submit Review Logic
+    function submitReview(e) {
+      e.preventDefault();
+      const author = document.getElementById('revAuthor').value.trim();
+      const rating = parseInt(document.getElementById('revRating').value);
+      const text = document.getElementById('revText').value.trim();
+
+      if (!author || !text) return;
+
+      const newReview = { author, rating, text, date: new Date().toLocaleDateString('uk-UA') };
+      reviews.unshift(newReview);
+      renderReviews();
+
+      document.getElementById('reviewForm').reset();
+    }
+
+    // Render Reviews
+    function renderReviews() {
+      const container = document.getElementById('reviewsContainer');
+      const noReviewsMsg = document.getElementById('noReviewsMsg');
+
+      if (reviews.length === 0) {
+        if (noReviewsMsg) noReviewsMsg.style.display = 'block';
+        return;
+      }
+
+      let starsHtml = (r) => '⭐'.repeat(r);
+
+      container.innerHTML = reviews.map(rev => `
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm animate-fade-in">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 font-bold text-xs flex items-center justify-center">
+                ${rev.author.charAt(0).toUpperCase()}
+              </div>
+              <div>
+                <span class="font-bold text-sm text-slate-900 dark:text-white block">${rev.author}</span>
+                <span class="text-[10px] text-slate-400">${rev.date}</span>
+              </div>
+            </div>
+            <div class="text-xs">${starsHtml(rev.rating)}</div>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${rev.text}</p>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
